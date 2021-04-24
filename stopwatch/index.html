@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<meta charset="UTF-8">
+<title>StopWatch</title>
+<centre><img src="logo.png" style = "display: block; margin-left: auto; margin-right: auto;" alt="logo" height="100" width="150" /></centre>
+<marquee><i><h3>PR WEB DEVELOPERS</h3></marquee>
+
+
+<meta name="viewport" content="width=device-width">
+<link rel="stylesheet" href="css/reset.css"><link rel="stylesheet" href="css/style.css">
+<style>
+body {
+    background-color: #c1ffc4;
+}
+</style>
+	<script>
+		window.console = window.console || function(t) {};
+		window.open = function(){ console.log('window.open is disabled.'); };
+		window.print = function(){ console.log('window.print is disabled.'); };
+		if (false) {
+		  window.ontouchstart = function(){};
+		}
+	</script>
+
+</head>
+
+<body>
+
+  <section>
+	<input type="radio" name="controls" id="start">
+	<input type="radio" name="controls" id="stop">
+	<input type="radio" name="controls" id="reset">
+	<div class="stopwatch">
+		<div class="cell">
+			<span class="num ten ten_hour">0 1 2 3 4 5 6 7 8 9</span>
+		</div>
+		<div class="cell">
+			<span class="num ten hour">0 1 2 3 4 5 6 7 8 9</span>
+		</div>
+		<div class="cell">
+			<span class="num">:</span>
+		</div>
+		<div class="cell">
+			<span class="num sex ten_minu">0 1 2 3 4 5</span>
+		</div>
+		<div class="cell">
+			<span class="num ten minu">0 1 2 3 4 5 6 7 8 9</span>
+		</div>
+		<div class="cell">
+			<span class="num">:</span>
+		</div>
+		<div class="cell">
+			<span class="num sex ten_sec">0 1 2 3 4 5</span>
+		</div>
+		<div class="cell">
+			<span class="num ten sec">0 1 2 3 4 5 6 7 8 9</span>
+		</div>
+		<div class="cell">
+			<span class="num">:</span>
+		</div>
+		<div class="cell">
+			<span class="num ten hund_mill">0 1 2 3 4 5 6 7 8 9</span>
+		</div>
+		<div class="cell">
+			<span class="num ten ten_mill">0 1 2 3 4 5 6 7 8 9</span>
+		</div>
+		<div class="cell">
+			<span class="num ten mill">0 1 2 3 4 5 6 7 8 9</span>
+		</div>
+	</div>
+	<div class="control">
+		<label for="start">Start</label>
+		<label for="stop">Stop</label>
+		<label for="reset">Reset</label>
+	</div>
+</section>
+
+	<script src='style.js'></script>
+
+	<script>
+		if (document.location.search.match(/type=embed/gi)) {
+		  window.parent.postMessage('resize', "*");
+		}
+	</script>
+
+<marquee><h2>This Page is Designed by PR</h2></marquee>
+<p>Copyright &copy; 2018 by PR, All rights Reserved</p>
+
+</body>
+
+</html>
