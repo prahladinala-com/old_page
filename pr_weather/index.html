@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Weather</title>
+    <meta charset="utf-8">
+    <!--[if lt IE 9]>
+    <script defer async src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Check you local weather.">
+
+    <meta name="theme-color" content="#243030" />
+    <link rel="canonical" href="https://www.techconductor.com/weather/">
+    
+    <meta property="og:url" content="https://www.techconductor.com/weather/">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Weather">
+    <meta property="og:description" content="Weather">
+    <meta property="og:site_name" content="TechConductor" />
+    <meta property="og:image" content="https://www.techconductor.com/img/favico192.png">
+    <link rel="shortcut icon" href="/img/favico.png">
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="Blog">
+    <link rel="icon" sizes="192x192" href="/img/favico192.png">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Blog">
+    <link rel="apple-touch-icon" href="/img/favico192.png">
+
+    <!-- Tile for Win8 -->
+    <meta name="msapplication-TileColor" content="#243030">
+    <meta name="msapplication-TileImage" content="/img/favico192.png">
+
+    
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" crossorigin="anonymous" >
+
+    <!-- Custom styles -->
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bitter|Roboto|Acme|Fredoka+One" crossorigin="anonymous" >
+    <link rel="stylesheet" type="text/css" href="/weather/w_style.css">
+
+</head>
+<body class="bg-light">
+<!-- Page Content -->
+<div class="container">
+  <div class="row">
+    <div class="col-12"><br>
+    <div class="card-container">
+      <div class="card">
+        <div class="front">
+          <div class="pl-5 pr-5" id="weather_wrapper">
+            <div class="weatherCard shadowDepthNav">
+              <div class="currentTemp">
+                <span id="temp" class="temp pl-5"> 29&deg;</span>
+                <span id="location" class="location">Guwahati</span>
+              </div>
+            </div>
+            <div class="weatherCard shadowDepthNav">
+              <div class="currentWeather">
+                <i id="w_icon" class="wi wi-yahoo-26 conditions"></i>
+                <p id="report" class="text-center pt-4"></p>
+                <div class="info">
+                  <span id="humid" class="humid">45</span>
+                  <span id="wind" class="wind">06 KPH</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="back">
+          <div class="pl-5 pr-5" id="weather_wrapper">
+            <div class="weatherCard shadowDepthNav p-2">
+              <div id="forcast" class="currentTemp text-center">
+              </div>
+            </div>
+            <div class="weatherCard shadowDepthNav">
+              <div class="currentWeather">
+                <i id="w_icon_b" class="wi wi-yahoo-26 conditions"></i>
+                <p id="report_b" class="text-center pt-4"></p>
+                <div class="info">
+                  <span id="sunrise" class="sunrise">00:00</span>
+                  <span id="sunset" class="sunset">00:00</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+  <div class="form-container">
+    <form class="form-group mx-sm-3 mb-2" id="subs_form" method="GET">
+
+        <!-- CITY -->
+        <div id="city-group" class="form-group">
+            <input type="text" class="form-control" name="city" id="city" placeholder="City">
+        </div>
+
+        <button id="submit" type="submit" name="submit" class="btn btn-success mb-2">Submit <span class="fa fa-arrow-right"></span></button>
+        <button id="auto_detect" name="auto_detect" onclick="getLocation()" class="btn btn-info mb-2">Auto Detect</button>
+
+    </form>
+    <div id="result"></div>
+    <div id="loc_lat_lng"></div>
+    </div><br><br>
+  </div>
+</div>
+</div>
+
+<link async rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" crossorigin="anonymous">
+  <!-- Custom fonts for this template -->
+    
+    <script type="text/javascript" async defer data-pin-hover="true" data-pin-tall="true" src="//assets.pinterest.com/js/pinit.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+
+    $('form').submit(function(event) {
+
+      var formData = {
+          'city': $('input[name=city]').val()
+      };
+      console.log(formData);
+      if(formData.city == ""){
+        console.log('empty City name!');
+      }else{
+        // process the form
+        $.ajax({
+            type        : 'GET', 
+            url         : 'https://query.yahooapis.com/v1/public/yql?q=select%20units,astronomy,atmosphere,wind,location,item%20from%20weather.forecast%20where%20woeid%20in%20(select%20woeid%20from%20geo.places(1)%20where%20text=%22'+formData.city+'%22)%20and%20u=%22c%22&format=json',
+            data        : formData, // our data object
+            dataType    : 'json',
+            encode      : true
+        })
+          // using the done promise callback
+          .done(function(data) {
+
+            console.log(data)
+            //extract individual information ffrom the JSON response
+            var temperature = data.query.results.channel.item.condition.temp;
+            var place = data.query.results.channel.location.city;
+            var wind = data.query.results.channel.wind.speed;
+            var last_update = data.query.results.channel.item.title;
+            var report = data.query.results.channel.item.condition.text;
+            var icon_code = data.query.results.channel.item.condition.code;
+            var humidity = data.query.results.channel.atmosphere.humidity;
+            var sunrise = data.query.results.channel.astronomy.sunrise;
+            var sunset = data.query.results.channel.astronomy.sunset;
+
+            //display our fetched information
+            $('#temp').empty();
+            $("#temp").append(' '+temperature+'&deg;');
+            $('#location').empty();
+            $("#location").append(place);
+            $("#wind").empty();
+            $("#wind").append(wind+' KPH');
+            $("#result").empty();
+            $("#result").append('Updated: '+last_update);
+            $("#report").empty();
+            $("#report").append(report);
+            $("#w_icon").removeClass();
+            $("#w_icon").addClass('wi wi-yahoo-'+icon_code+' conditions');
+            $("#report_b").empty();
+            $("#report_b").append(report);
+            $("#w_icon_b").removeClass();
+            $("#w_icon_b").addClass('wi wi-yahoo-'+icon_code+' conditions');
+            $("#humid").empty();
+            $("#humid").append(humidity); 
+            $("#sunrise").empty();
+            $("#sunrise").append(sunrise);
+            $("#sunset").empty();
+            $("#sunset").append(sunset);
+            $("#forcast").empty();
+            var i;
+            for (i = 0; i < 7; i++) {
+             $("#forcast").append('<p class="text-white">'+data.query.results.channel.item.forecast[i].day+' : '+data.query.results.channel.item.forecast[i].high+'<sup>o</sup>C - '+data.query.results.channel.item.forecast[i].low+'<sup>o</sup>C <spam class="wi wi-yahoo-'+data.query.results.channel.item.forecast[i].code+' pl-3"></spam></p>');   
+            }           
+          });
+      }
+
+        // stop the form from submitting the normal way and refreshing the page
+        event.preventDefault();
+    });
+});
+</script>
+
+<script type="text/javascript">
+function getLocation() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(showPosition);
+  } else { 
+    temp_lat = 0.0; //set default lat value
+    temp_lng = 0.0; //set default lng value
+  }
+}
+
+function showPosition(position) {
+  temp_lat = position.coords.latitude;
+  temp_lng = position.coords.longitude;
+  $("#loc_lat_lng").html('<p align="justify"><b>Lat:</b>'+temp_lat+' <b>Lng:</b> '+temp_lng+'</p>');
+  $.ajax({
+    type        : 'GET', 
+    url         : 'https://maps.googleapis.com/maps/api/geocode/json?latlng='+temp_lat+','+temp_lng+'&sensor=true',
+    dataType    : 'json',
+    encode      : true
+  })
+  .done(function(data) {
+
+    if(data.status === "OK"){
+      var addr_array_length = data.results[0].address_components.length;
+      var c = data.results[0].address_components[addr_array_length - 5].long_name;
+      $("#city").val(c);
+      $("#subs_form").submit();
+    }else{
+      console.log('Oops!');
+    }
+  });
+}
+</script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.2.0/anime.js"></script>
+  <script type="text/javascript">
+var card = document.querySelector(".card");
+var playing = false;
+
+card.addEventListener("click", function() {
+  if (playing) return;
+
+  playing = true;
+  anime({
+    targets: card,
+    scale: [{ value: 1 }, { value: 1.4 }, { value: 1, delay: 250 }],
+    rotateY: { value: "+=180", delay: 200 },
+    easing: "easeInOutSine",
+    duration: 400,
+    complete: function(anim) {
+      playing = false;
+    }
+  });
+});
+
+  </script>
+  </body>
+  </html>

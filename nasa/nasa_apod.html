@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="https://fonts.googleapis.com/css?family=Gayathri&display=swap" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <title>NASA Space</title>
+  <style type="text/css">
+  	body {
+		background-image: linear-gradient(to right, #a517ba,#5f1782);
+		  color: white;
+		  font-family: 'Gayathri', sans-serif;
+	  }
+	  .hello{
+		display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+	  }
+	  #title{
+		font-weight: bold;
+	  }
+	  #madam{
+		font-weight: bold;
+	  }
+
+  </style>
+</head>
+<body>  
+		<section id="nav-bar">
+				<nav class="navbar navbar-expand-lg navbar-light bg-light">
+					<a class="navbar-brand" href="#"><img src="images/NASA_logo.png"></a>
+					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+						<i class="fa fa-bars" aria-hidden="true"></i>
+					</button>
+					<div class="collapse navbar-collapse" id="navbarNav">
+						<ul class="navbar-nav ml-auto">
+							<li class="nav-item">
+								<a class="nav-link" href="index.html"><i class="fa fa-home" aria-hidden="true"></i> HOME</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="information.html"><i class="fa fa-server" aria-hidden="true"></i> INFO</a>
+							</li>
+							<!-- <li class="nav-item">
+								<a class="nav-link" href="#imaze"><i class="fa fa-picture-o" aria-hidden="true"></i> IMAGES</a>
+							</li> -->
+							<li class="nav-item">
+								<a class="nav-link" href="nasa_apod.html"><i class="fa fa-picture-o" aria-hidden="true"></i> APOD</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="satellite.html"><i class="fa fa-space-shuttle" aria-hidden="true"></i> LAUNCH INFO</a>
+							</li>
+						</ul>
+					</div>
+				</nav>
+	
+			</section>
+
+	<br>
+	<div class="container">
+	
+	<h1 id="madam" style="text-align: center;"><u>Astronomy Picture of the Day</u></h1>
+  
+	 <img id="imaze" width="100%" class="hello"/>
+	 
+	<br>
+	 <p id="copyright"></p>
+  
+ 	<h2 id="title"></h2>
+	 <h3 id="explaination"></h3>
+	 
+	</div>
+
+  <script>
+		
+	var url = "https://api.nasa.gov/planetary/apod?api_key=tenZiOX5kr2WyVXpkrafs2OfrpMYISbdK2uQSrC8";
+
+		$.ajax({
+			url: url,
+		  success: function(result){
+		  if("copyright" in result) {
+		    $("#copyright").text("Image Credits: " + result.copyright);
+		  }
+		  else {
+		    $("#copyright").text("Image Credits: " + "Public Domain");
+		  }
+		  
+		  if(result.media_type == "video") {
+		    $("#imaze").css("display", "none"); 
+		    $("#apod_vid_id").attr("src", result.url);
+		  }
+		  else {
+		    $("#apod_vid_id").css("display", "none"); 
+		    $("#imaze").attr("src", result.url);
+		  }
+		  $("#reqObject").text(url);
+		  $("#returnObject").text(JSON.stringify(result, null, 4));  
+		  $("#explaination").text(result.explanation);
+		  $("#title").text(result.title);
+		}
+		});
+	</script>
+
+</body>
+</html>

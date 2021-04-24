@@ -1,0 +1,233 @@
+<head>
+    <style>
+        code {
+  display: block;
+  white-space: pre-wrap;
+}
+
+    </style>
+</head>
+<body>
+<h3>VERIFICATION OF SAMPLING THEOREM</h3>
+
+<code>
+clc;
+clear all;
+t=-100:0.01:100;
+fm=0.02;
+x=cos(2*pi*t*fm);
+subplot(221);
+plot(t,x);
+xlabel('time');
+ylabel('x(t)');
+title('continuous time signal');
+fs1=0.02;
+n=-2:2;
+x1=cos(2*pi*fm*n/fs1);
+subplot(222);
+stem(n,x1,':');
+xlabel('n');
+ylabel('x(n)');
+title('discrete time signal with fs<2fm');
+fs2=0.04;
+n1=-4:4;
+x2=cos(2*pi*fm*n1/fs2);
+subplot(223);
+stem(n1,x2,':');
+hold on;
+xlabel('n');
+ylabel('x(n)');
+title('discrete time signal x(n) with fs=2fm');
+fs3=0.5;
+n2=-50:50;
+x3=cos(2*pi*fm*n2/fs3);
+subplot(224);
+stem(n2,x3,':');
+hold on;
+xlabel('n');
+ylabel('x(n)');
+title('discrete time signal x(n) with fs>2fm');
+</code>
+
+<br/>
+<br/>
+<h3>PULSE AMPLITUDE MODULATION & DEMODULATION</h3>
+
+<code>
+clc;
+clear all;
+close all;
+t=0:1/1e3:1;
+d=0:1/5:1;
+x=sin(2*pi/4*2*t);
+figure;
+subplot(311);
+plot(x);
+title('message');
+xlabel('time');
+ylabel('amplitude');
+y=pulstran(t,d,'rectpuls',0.1);
+subplot(312);
+plot(y);
+title('pulse input');
+xlabel('time');
+ylabel('amplitude');
+z=x.*y;
+subplot(313);
+plot(z);
+title('PAM Modulation');
+xlabel('time');
+ylabel('amplitude');
+</code>
+
+<br/>
+<br/>
+<h3>PULSE WIDTH MODULATION AND DEMODULATION</h3>
+
+<code>
+clc;
+clear all;
+close all;
+fc=1000;
+fs=10000;
+f1=200;
+t=0:1/fs:((2/f1)-(1/fs));
+x1=(0.4*cos(2*pi*f1*t))+0.5;
+y1= modulate(x1,fc,fs,'pwm');
+subplot(221);
+plot(x1);
+xlabel('time');
+ylabel('amplitude');
+title('single tone message, f1=200,fs=10000');
+subplot(222);
+plot(y1);
+xlabel('time');
+ylabel('amplitude');
+axis([0 200 -0.2 1.2]);
+title('pwm,one cycle of f1,fc=1000,f1=200');
+x1=demod(y1,fc,fs,'pwm');
+subplot(223);
+plot(x1);
+xlabel('time');
+ylabel('amplitude');
+title('time domain recovered single tone,f1=200');
+</code>
+
+<br/>
+<br/>
+<h3>PULSE POSITION MODULATION & DEMODULATION</h3>
+<code>
+clc;
+clear all;
+close all;
+fc=1000;%carrier frequency;
+fs=10000;%smapling frequency;
+f1=200;%single tone modulation;
+t=0:1/fs:((2/f1)-(1/fs));
+x1=0.4*cos(2*pi*f1*t)+0.5;
+%single tone tone message to be [0,1];
+y1=modulate(x1,fc,fs,'ppm');
+subplot(2,2,1);
+plot(x1);
+xlabel('time');
+ylabel('amplitude');
+title('single tone message,f1=200,fs=1000');
+subplot(2,2,2);
+plot(y1);
+xlabel('time');
+ylabel('amplitude');
+axis([0 200 -0.2 1.2]);
+title('ppm,one cycle of f1,fc=1000,f1=200');
+%demodulation
+x1_recov=demod(y1,fc,fs,'ppm');
+subplot(2,2,3);
+plot(x1_recov);
+xlabel('time');
+ylabel('amplitude');
+title('time domain recoverd single tone f1=200');
+</code>
+
+<br/>
+<br/>
+<h3>FREQUENCY SYNTHESIZER</h3>
+
+<code>
+clc;
+clear all;
+close all;
+t=0:0.001:0.2;
+fc=50;
+N=cos(2*pi*fc*t);
+n=input('enter number of waveforms needed');
+for i=1:n
+    N=cos(2*pi*fc*t*i);
+        subplot(n,1,i);
+    plot(t,N);
+xlabel('time');
+ylabel('amplitude');
+title('frequency synthesizer waveform');
+end
+</code>
+
+<br/>
+<br/>
+<h3>PLL AS FM DEMODULATOR</h3>
+
+<code>
+clc;
+clear all;
+close all;
+reg1=0;
+reg2=0;
+reg3=0;
+eta=sqrt(2)/2;
+theta=2*pi*1/100;
+kp=[(4*eta*theta)/(1+2*eta*theta+theta^2)];
+ki=[(4*theta^2)/(1+2*eta*theta+theta^2)];
+d_phi_1=1/20;
+n_data=100;
+for nn=1:n_data
+    phi1=reg1+d_phi_1;
+    phi1_reg(nn)=phi1;
+    s1=exp(j*2*pi*reg1);
+    s2=exp(j*2*pi*reg2);
+    s1_reg(nn)=s1;
+    s2_reg(nn)=s2;
+    t=s1*conj(s2);
+    phi_error=atan(imag(t)/real(t)/(2*pi));
+    phi_error_reg(nn)=phi_error;
+    sum1=kp*phi_error+phi_error*ki+reg3;
+    reg1_reg(nn)=reg1;
+    reg2_reg(nn)=reg2;
+    reg1=phi1;
+    reg2=reg2+sum1;
+    reg3=reg3+phi_error*ki;
+    phi2_reg(nn)=reg2;
+end
+figure(1)
+plot(phi1_reg);
+hold on;
+plot(phi2_reg,'r');
+hold off;
+grid on;
+title('phase plot');
+xlabel('samples');
+ylabel('phase');
+figure(2)
+plot(phi_error_reg);
+title('phase error of phase detector');
+grid on;
+xlabel('samples(n)');
+ylabel('phase error(degrees)');
+figure(3)
+plot(real(s1_reg));
+hold on;
+plot(real(s2_reg),'r');
+hold off;
+grid on;
+title('input signal & output signal of VCO');
+xlabel('samples');
+ylabel('amplitude');
+axis([0 n_data -1.1 1.1]);
+</code>
+</body>

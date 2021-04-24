@@ -1,0 +1,150 @@
+@import url(https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.8/css/weather-icons.css);
+
+#weather_wrapper {
+  margin: 25px auto;
+}
+.weatherCard {
+  width: 250px;
+  height: 200px;
+  font-family: "Roboto";
+  position: relative;
+}
+.currentTemp {
+  width: 250px;
+  height: 200px;
+  background: rgb(41, 41, 41);
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.currentWeather {
+  width: 250px;
+  height: 200px;
+  background: rgb(237, 237, 237);
+  margin: 0;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+.temp {
+  font-size: 80px;
+  text-align: center;
+  display: block;
+  font-weight: 300;
+  color: rgb(255, 255, 255);
+  padding: 20px 0 0;
+}
+.location {
+  color: rgb(255, 255, 255);
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 30px;
+  display: block;
+}
+.w_icon {
+ padding-left: 7.6rem!important;
+}
+.conditions {
+  font-family: weathericons;
+  font-size: 80px;
+  display: block;
+  padding: 20px 0 0;
+  text-align: center;
+}
+.info {
+  width: 250px;
+  height: 50px;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background: rgb(42, 178, 234);
+  font-weight: 700;
+  color: rgb(255, 255, 255);
+  text-align: center;
+}
+.humid, .sunrise {
+  width: 45%;
+  position: absolute;
+  left: 25px;
+  top: 10px;
+}
+.humid::before {
+  display: block;
+  content: "\f07a";
+  font-family: weathericons;
+  font-size: 30px;
+  top: -8px;
+  position: absolute;
+  left: 8px;
+}
+.sunrise::before{
+  display: block;
+  content: "\f051";
+  font-family: weathericons;
+  font-size: 30px;
+  top: -4px;
+  position: absolute; 
+  left: -18px;
+}
+.wind, .sunset {
+  width: 50%;
+  right: -18px;
+  position: absolute;
+  top: 10px;
+}
+.wind::before {
+  display: block;
+  content: "\f050";
+  font-family: weathericons;
+  font-size: 25px;
+  left: -15px;
+  position: absolute;
+  top: -4px;
+}
+.sunset::before {
+  display: block;
+  content: "\f052";
+  font-family: weathericons;
+  font-size: 25px;
+  left: -10px;
+  position: absolute;
+}
+
+.card-container {
+  font-weight: bold;
+  width: 20px;
+  height: 250px;
+  margin: 80px auto;
+  perspective: 1400px;
+}
+.form-container {
+  width: 262px;
+  height: 95px;
+  margin: 0px auto;
+}
+
+.card {
+  position: relative;
+  height: 100%;
+  border-radius: 10px;
+  transform-style: preserve-3d;
+}
+
+.front,
+.back {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  justify-content: center;
+  align-items: center;
+  backface-visibility: hidden;
+}
+
+.back {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: rotateY(180deg);
+}

@@ -1,0 +1,99 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <title>Password Generator</title>
+  <centre><img src="logo.png" style = "display: block; margin-left: auto; margin-right: auto;" alt="logo" height="100" width="150" /></centre><marquee><i><h3>PR WEB DEVELOPERS</h3></marquee>
+
+
+  <link rel="stylesheet" href="css/style.css">
+<style>
+.button {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 0px 0px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 2px 2px;
+    cursor: pointer;
+    width: 125px;
+    height: 40px;
+}
+body {
+    background-color: #c1ffc4;
+}
+</style>
+  <script>
+    window.console = window.console || function(t) {};
+    window.open = function(){ console.log('window.open is disabled.'); };
+    window.print = function(){ console.log('window.print is disabled.'); };
+    // Support hover state for mobile.
+    if (false) {
+      window.ontouchstart = function(){};
+    }
+  </script>
+
+    <script src="js/function.js"></script>
+
+</head>
+
+<body>
+
+<div class="container">
+  <h4>Password Generator</h4>
+  <div class="row">
+    <div class="eight columns">
+      <p><label for="">Length:</label> <input id="length" type="number" value="12"/> <br />
+        <label for="">Characters:</label>
+        <input type="text" value='12345677890!@£$%^&*()-=_+qwertyuiopasdfghjklzxcvbnmQWERTYUIOPSDFGHJKLZXCVBNM[]{};:"\|,<.>/?' id="charset" />
+        <button id="generate" class="button">Generate</button>
+      </p>
+    </div>
+    <div class="four columns" id="passwords">
+
+    </div>
+  </div>
+</div>
+
+  <script src='js/jquery.js'></script>
+  <script>
+    if (document.location.search.match(/type=embed/gi)) {
+      window.parent.postMessage('resize', "*");
+    }
+  </script>
+
+  <script src="js/timeout.js"></script>
+  <script>
+    $('#generate').click(function () {
+    var charset = $('#charset').val();
+    var password = '';
+    var password_length = parseInt($('#length').val());
+    for (var i = 0; i < password_length; i++) {
+        if (window.CP.shouldStopExecution(1)) {
+            break;
+        }
+        var random_position = Math.floor(Math.random() * charset.length);
+        password += charset[random_position];
+    }
+    window.CP.exitedLoop(1);
+    if (password.length == password_length) {
+        password = password.replace(/</g, '&lt;').replace(/>/g, '&gt;');
+        $('#passwords').prepend(password + '<br/>' + '<hr />');
+    } else {
+        console.log(password.length, password_length, password);
+    }
+});
+  </script>
+
+<p>Copyright &copy; 2018 by PR, All rights Reserved</p>
+
+</body>
+
+</html>
