@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Day Identifier</title>
+	<centre><img src="logo.png" style = "display: block; margin-left: auto; margin-right: auto;" alt="logo" height="100" width="150" /></centre><marquee><i><h3>PR WEB DEVELOPERS</h3></marquee>
+
+	<h2>Day at that Date ?</h2>
+	<style>
+.button {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    width: 125px;
+    height: 50px;
+}
+body {
+    background-color: #c1ffc4;
+}
+</style>
+</head>
+<body>
+	<form name="getForm">
+Enter a date:<br />
+<br />
+Day: <input type="text" name="getDay" length=2 value="01" size="2" />
+Month: <input type="text" name="getMonth" length=2 value="01" size="2" />
+Year: <input type="text" name="getYear" length=4 value="2005" size="4" />
+<br />
+<br />
+<input type="button" value="Calculate!" onClick=calculate() class="button" />
+</form>
+	<script language="JavaScript">
+<!--
+function calculate(){
+var Day = document.getForm.getDay.value
+var Month = document.getForm.getMonth.value
+var Year = document.getForm.getYear.value
+Month = Month - 1
+var theDate = new Date()
+theDate.setDate(Day)
+theDate.setMonth(Month)
+theDate.setYear(Year)
+var month = Month + 1
+var dayArray = new Array("Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday") 
+alert("The day is: " + dayArray[theDate.getDay()] + "( " + Day + "/" + month + "/" + Year + " )")
+}
+//-->
+</script>
+<marquee><h2>This Page is Designed by PR</h2></marquee>
+<p>Copyright &copy; 2018 by PR, All rights Reserved</p>
+</body>
+</html>

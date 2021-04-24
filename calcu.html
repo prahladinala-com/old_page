@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+    
+<head>
+       <link rel="shortcut icon" href="favicon.ico" >
+   <link rel="icon" type="image/gif" href="animated_favicon1.gif" >
+    <centre><img src="logo.png" style = "display: block; margin-left: auto; margin-right: auto;" alt="logo" height="100" width="150" /></centre><marquee><i><h3>PR WEB DEVELOPERS</h3></marquee>
+	<title>PR Basic calculator</title>
+<style>
+body {
+background-color:#aec3e5;
+font-size:25px;
+
+}
+h4{
+text-align:center ;
+background-color:#e89bca;
+border:solid ;
+border-color:#565355;
+border-radius:30px;
+color:#070707;
+}
+input{
+background-color:#e89bca;
+padding:10px;
+border:solid ;
+border-color:#565355;
+border-radius:20px
+}
+span{
+width:50px;
+height:50px;
+padding:10px;
+}
+.but{
+background-color:#e89bca;
+border-radius:100px;
+color:#070707;
+}
+p{
+color:#070707;
+}
+i{
+text-decoration:underline ;
+}
+</style>
+</head>
+<body>
+<h4>PR calculator</h4>
+<form action="">
+Enter a number<br /><input id="no" type="number" name="no" placeholder="eg 665,854,21"><br />
+Enter another number<br />
+<input id="n"type="number" name="n" placeholder="eg 455,78,43"><br />
+</form>
+<button onclick="add()" class="but"><font size="6">+</font></button><span></span><button onclick="sub()" class="but"><font size="6">-</font></button><span></span><button onclick="div()" class="but"><font size="6">/</font></button><span></span><button onclick="mult()" class="but"><font size="6">*</font></button>
+<p>Your answer is <u id="an"></u></p>
+<p><b>Designed by <i>PR & team</i></b></p>
+<p>THANK YOU FOR VISITING OUR WEBSITE . . . .</p>
+<p>You can freely use this tool, To calculate your budget and many more</p>
+<p>.</p>
+<p>.</p>
+<form method="get" action="http://jngp.ml/" target="_blank">
+    <p><h5>CHECK OUT OUR OTHER WEBSITES</h5></p>
+    <button type="submit">PR Age Calculator</button>
+</form>
+
+<form method="get" action="https://www.youtube.com/channel/UCcAGuK1S6LWte5Qe_neQ7kA" target="_blank">
+    <p><h5>CHECK OUT OUR YOUTUBE CHANNEL</h5></p>
+    <button type="submit">YOUTUBE CHANNEL</button></button>
+</form>
+
+    <p><h5>DO YOU WANT TO USE THIS WEBSITE AS AN APP ?</h5></p>
+    <button onclick="window.location.href='http://www.mediafire.com/file/c98ephlek9hs7hc/PRCalculator.apk/file'">PR </button>
+
+<script>function add(){
+var no,n,sum;
+no=parseFloat(document.getElementById("no").value);
+n=parseFloat(document.getElementById("n").value);
+sum=no+n; document.getElementById("an").innerHTML=sum;
+}
+function sub(){
+var a,b,sub;
+a=parseFloat(document.getElementById("no").value);
+b=parseFloat(document.getElementById("n").value);
+sub=a-b; document.getElementById("an").innerHTML=sub;
+}
+function div(){
+var no,n,div;
+no=parseFloat(document.getElementById("no").value);
+n=parseFloat(document.getElementById("n").value);
+div=no/n; document.getElementById("an").innerHTML=div;
+}
+function mult(){
+var no,n,mult;
+no=parseFloat(document.getElementById("no").value);
+n=parseFloat(document.getElementById("n").value);
+mult=no*n; document.getElementById("an").innerHTML=mult;
+}
+</script>
+<marquee><h2>This Page is Designed by PR</h2></marquee>
+<p>Copyright &copy; 2018 by PR, All rights Reserved</p>
+</body>
+</html>

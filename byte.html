@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Byte Converter</title>
+	<centre><img src="logo.png" style = "display: block; margin-left: auto; margin-right: auto;" alt="logo" height="100" width="150" /></centre><marquee><i><h3>PR WEB DEVELOPERS</h3></marquee>
+
+	<h2>PR Byte Converter</h2>
+	<style>
+.button {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 10px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    width: 125px;
+    height: 35px;
+}
+body {
+    background-color: #c1ffc4;
+}
+</style>
+</head>
+<body>
+	<form name="converter">
+	Byte: <input type="text" name="byte" onChange="byteConverter()" /><br /><br />
+	KB: <input type="text" name="kb" onChange="kbConverter()" /><br /><br />
+	MB: <input type="text" name="mb" onChange="mbConverter()" /><br /><br />
+	GB: <input type="text" name="gb" onChange="gbConverter()" /><br /><br />
+    <input type="button" value="Convert!" class="button" />
+</form>
+<script language="JavaScript">
+<!--
+function byteConverter(){
+document.converter.kb.value = document.converter.byte.value / 1024
+document.converter.mb.value = document.converter.byte.value / (1024*1024)
+document.converter.gb.value = document.converter.byte.value / (1024*1024*1024)
+}
+
+function kbConverter(){
+document.converter.byte.value = document.converter.kb.value * 1024
+document.converter.mb.value = document.converter.kb.value / 1024
+document.converter.gb.value = document.converter.kb.value / (1024*1024)
+}
+
+function mbConverter(){
+document.converter.byte.value = document.converter.mb.value * 1024 * 1024
+document.converter.kb.value = document.converter.mb.value * 1024
+document.converter.gb.value = document.converter.mb.value / 1024
+}
+function gbConverter(){
+document.converter.byte.value = document.converter.gb.value * 1024 * 1024 * 1024
+document.converter.kb.value = document.converter.gb.value * 1024 * 1024
+document.converter.mb.value = document.converter.gb.value * 1024
+}
+//-->
+</script>
+<marquee><h2>This Page is Designed by PR</h2></marquee>
+<p>Copyright &copy; 2018 by PR, All rights Reserved</p>
+</body>
+</html>

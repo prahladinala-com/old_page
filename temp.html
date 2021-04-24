@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Temperature Converter</title>
+	<centre><img src="logo.png" style = "display: block; margin-left: auto; margin-right: auto;" alt="logo" height="100" width="150" /></centre><marquee><i><h3>PR WEB DEVELOPERS</h3></marquee>
+
+	<h2>PR Temperature Converter</h2>
+	<style>
+.button {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 10px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    width: 125px;
+    height: 35px;
+}
+body {
+    background-color: #c1ffc4;
+}
+</style>
+</head>
+<body>
+	<form name="converter">
+Celsius: <input type="text" name="celsius" onChange="CelsiusConverter()"><br /><br />
+Fahrenheit: <input type="text" name="fahrenheit" onChange="FahrenheitConverter()"><br /><br />
+Kelvin: <input type="text" name="kelvin" onChange="KelvinConverter()"><br /><br />
+<input type="button" value="Convert!" class="button"/>
+</form>
+<script language="JavaScript">
+<!--
+function CelsiusConverter(){
+document.converter.fahrenheit.value = (document.converter.celsius.value * 9 / 5) + 32
+document.converter.kelvin.value = document.converter.celsius.value * 1 + 273.15
+}
+function FahrenheitConverter(){
+document.converter.celsius.value = (document.converter.fahrenheit.value - 32) * 5 / 9
+document.converter.kelvin.value=((document.converter.fahrenheit.value - 32)*5/9)+273.15
+}
+function KelvinConverter(){
+document.converter.celsius.value = document.converter.kelvin.value - 273.15
+document.converter.fahrenheit.value=((document.converter.kelvin.value - 273.15)*9/5)+32
+}
+//-->
+</script>
+<marquee><h2>This Page is Designed by PR</h2></marquee>
+<p>Copyright &copy; 2018 by PR, All rights Reserved</p>
+</body>
+</html>

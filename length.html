@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Length Converter</title>
+	<centre><img src="logo.png" style = "display: block; margin-left: auto; margin-right: auto;" alt="logo" height="100" width="150" /></centre><marquee><i><h3>PR WEB DEVELOPERS</h3></marquee>
+
+	<h2>PR Length Converter</h2>
+	<style>
+.button {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 10px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    width: 125px;
+    height: 35px;
+}
+body {
+    background-color: #c1ffc4;
+}
+</style>
+</head>
+<body>
+	<form name="converter">
+Cm: <input type="text" name="cm" onChange="cmConverter()"><br /><br />
+Inch: <input type="text" name="inch" onChange="inchConverter()"><br /><br />
+Feet: <input type="text" name="feet" onChange="feetConverter()"><br /><br />
+<input type="button" value="Convert!" class="button" />
+</form>
+<script language="JavaScript">
+<!--
+function cmConverter(){
+document.converter.inch.value = document.converter.cm.value / 2.54
+document.converter.feet.value = document.converter.cm.value / 30.48
+}
+function inchConverter(){
+document.converter.cm.value = document.converter.inch.value * 2.54
+document.converter.feet.value = document.converter.inch.value / 12
+}
+function feetConverter(){
+document.converter.cm.value = document.converter.feet.value * 30.48
+document.converter.inch.value = document.converter.feet.value * 12
+}
+//-->
+</script>
+<marquee><h2>This Page is Designed by PR</h2></marquee>
+<p>Copyright &copy; 2018 by PR, All rights Reserved</p>
+</body>
+</html>

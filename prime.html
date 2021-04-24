@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Prime Numbers Calculator</title>
+	<centre><img src="logo.png" style = "display: block; margin-left: auto; margin-right: auto;" alt="logo" height="100" width="150" /></centre><marquee><i><h3>PR WEB DEVELOPERS</h3></marquee>
+
+	<h2>Prime Numbers Calculator</h2>
+	<style>
+.button {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 5px 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    width: 100px;
+    height: 30px;
+}
+body {
+    background-color: #c1ffc4;
+}
+</style>
+</head>
+<body>
+	<form name="primeForm">
+Max. prime number: <input type="text" name="primeText" />
+<input type="button" name="button" value="Submit!" onClick="primeNumbers()" class="button"/><br />
+<textarea name="primeArea" rows="20" cols="60"></textarea>
+</form>
+<script language="JavaScript">
+<!--
+function primeNumbers(){
+var p
+var n = document.primeForm.primeText.value
+var d
+var x
+var prime
+var displayAll = 2 + " "
+for(p = 3; p <= n; p = p+2){
+x = Math.sqrt(p)
+prime=1
+for(d = 3; prime && (d <= x); d = d+2)
+if((p%d) == 0)
+prime = 0
+else
+prime = 1
+if(prime == 1){
+displayAll = displayAll + p + " "
+}
+}
+document.primeForm.primeArea.value = displayAll
+}
+//-->
+</script>
+</body>
+<marquee><h2>This Page is Designed by PR</h2></marquee>
+<p>Copyright &copy; 2018 by PR, All rights Reserved</p>
+</html>

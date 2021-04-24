@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Body Mass Index calculator</title>
+	<centre><img src="logo.png" style = "display: block; margin-left: auto; margin-right: auto;" alt="logo" height="100" width="150" /></centre><marquee><i><h3>PR WEB DEVELOPERS</h3></marquee>
+	
+	<h2>Body Mass Index Calculator</h2>
+    <h2> Dr.PR is going to tell you are over-weighted or under-weighted</h2>
+	<style>
+.button {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 10px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    width: 125px;
+    height: 30px;
+}
+body {
+    background-color: #c1ffc4;
+}
+</style>
+</head>
+<body>
+	<form name="bmiForm">
+Your Weight(kg): <input type="text" name="weight" size="20"><br /><br />
+Your Height(cm): <input type="text" name="height" size="20"><br /><br />
+<input type="button" value="Calculate BMI" onClick="calculateBmi()" class="button"><br /><br />
+Your BMI: <input type="text" name="bmi" size="26"><br /><br />
+This Means: <input type="text" name="meaning" size="25"><br /><br />
+<input type="reset" value="Reset" class="button" />
+</form>
+	<script language="JavaScript">
+<!--
+function calculateBmi() {
+var weight = document.bmiForm.weight.value
+var height = document.bmiForm.height.value
+if(weight > 0 && height > 0){	
+var finalBmi = weight/(height/100*height/100)
+document.bmiForm.bmi.value = finalBmi
+if(finalBmi < 18.5){
+document.bmiForm.meaning.value = "That you are under-weight."
+}
+if(finalBmi > 18.5 && finalBmi < 25){
+document.bmiForm.meaning.value = "That you are healthy."
+}
+if(finalBmi > 25){
+document.bmiForm.meaning.value = "That you have over-weight."
+}
+}
+else{
+alert("Please Fill in everything correctly")
+}
+}
+//-->
+</script>
+<h3>&nbsp;STAY HEALTHY &nbsp; &#9786;</h3>
+<h3>&nbsp; &nbsp; &nbsp; &#9787; &nbsp; STAY HAPPY</h3><br />
+<p>Wish you a happy and healthy life</p>
+<marquee><h2>This Page is Designed by PR</h2></marquee>
+<p>Copyright &copy; 2018 by PR, All rights Reserved</p>
+</body>
+</html>
