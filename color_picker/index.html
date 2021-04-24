@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>PR Color Picker</title>
+	<h1 style="color:#FF3800;">PR Color Picker</h1>
+</head>
+<body style="text-align:center;">
+	<style>
+		body {background-color: powderblue;}
+	</style>
+
+	<script src="jscolor.js"></script>
+
+	<h2 style="color:black;">Color Code 1</h2>
+	Color 1: <input class="jscolor" value="000000">
+<br>
+<br>
+	Color 2: <input class="jscolor" value="FF0000">
+<br>
+<br>
+	Color 3: <input class="jscolor" value="00FF00">
+<br>
+<br>
+	Color 4: <input class="jscolor" value="0000FF">
+<br>
+<br>
+	Color 5: <input class="jscolor" value="FFFFFF">
+
+<br>
+<br>
+	<h2 style="color:black;">Color Code 2</h2>
+	<h2>THIS IS THE SAMPLE, TO TEST YOUR TEXT COLOR</h2>
+	<p>A man asks a farmer near a field, “Sorry sir, would you mind if I crossed your field instead of going around it? You see, I have to catch the 4:23 train.”<br>
+The farmer says, “Sure, go right ahead. And if my bull sees you, you’ll even catch the 4:11 one.”</p>
+
+	<button class="jscolor {valueElement:'chosen-value', onFineChange:'setTextColor(this)'}">
+		Pick text color
+	</button>
+
+	HEX value: <input id="chosen-value" value="000000">
+
+	<script>
+	function setTextColor(picker) {
+		document.getElementsByTagName('body')[0].style.color = '#' + picker.toString()
+	}
+	</script>
+
+<br>	
+<br>
+<h2 style="color:black;">HERE ARE SOME STANDARD COLORS USED</h2>
+<h2 style="background-color:black; color:white;">#000000</h2>
+<h2 style="background-color:red; color:black;">#FF0000</h2>
+<h2 style="background-color:green; color:black;">#00FF00</h2>
+<h2 style="background-color:blue; color:black;">#0000FF</h2>
+<h2 style="background-color:white; color:black;">#FFFFFF</h2>
+<br>
+<h2 style="color:black;">HERE ARE SOME COMMON COLORS USED</h2>
+<h2 style="background-color:Tomato; color:black;">Tomato</h2>
+<h2 style="background-color:Orange; color:black;">Orange</h2>
+<h2 style="background-color:DodgerBlue; color:black;">DodgerBlue</h2>
+<h2 style="background-color:MediumSeaGreen; color:black;">MediumSeaGreen</h2>
+<h2 style="background-color:Gray; color:black;">Gray</h2>
+<h2 style="background-color:SlateBlue; color:black;">SlateBlue</h2>
+<h2 style="background-color:Violet; color:black;">Violet</h2>
+<h2 style="background-color:LightGray; color:black;">LightGray</h2>
+
+</body>
+</html>

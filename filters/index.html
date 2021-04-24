@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>PR Photo Filters</title>
+	<script src="scripts/libs/CanvasUtils.js"></script>
+	<script src="scripts/libs/DomUtils.js"></script>
+</head>
+<body>
+	<div>
+		<label for="upload-img">Upload an image</label>
+		<input type="file" name="upload-img" id="upload-img" onchange="handleFiles(this.files)">
+		<!-- buttons for applying filter -->
+		<button class="filters-btn" id="filter-original">Original</button>
+		<button class="filters-btn" id="filter-grayscale">GrayScale</button>
+		<button class="filters-btn" id="filter-blur">Blur</button>
+		<button class="filters-btn" id="filter-rotate-left">Rotate Left</button>
+		<button class="filters-btn" id="filter-rotate-right">Rotate Right</button>
+	</div>
+	<hr>
+	<img src="" alt="" id="inpt-img" style="display: none;">
+	<canvas id="out-can"></canvas>
+	<script src="scripts/index.js"></script>
+</body>
+</html>
